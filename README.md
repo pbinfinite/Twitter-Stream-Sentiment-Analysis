@@ -1,7 +1,8 @@
 # Twitter-Stream-Sentiment-Analysis
 <br>
 This project performs sentiment analysis on real-time stream of tweets obtained using the Twitter API.<br>
-The stream of tweets is filtered using specific words or hashtags.<br><br>
+The stream of tweets is filtered using specific words or hashtags.<br>
+Credentials to access the twitter API can be obtained by creating a twitter developer account.<br><br>
 Here, Kafka is used as a queuing service for the stream of tweets.<br>
 After creation of a kafka topic named twitterstream, we enable kafka and zookeeper using the commands:<br><br>
 <i>sudo systemctl enable zookeeper</i><br>
