@@ -10,16 +10,16 @@ def load_wordlist(filename):
     f = open(filename, 'rU')
     text = f.read()
     text = text.split('\n')
-    for line in text:
-    	words[line] = 1
+    for l in text:
+    	words[l] = 1
     f.close()
     return words
 
 
-def updateFunction(newValues, runningCount):
-    if runningCount is None:
-    	runningCount = 0
-    return sum(newValues, runningCount) 
+def updateFunction(newval, currCt):
+    if currCt is None:
+    	currCt = 0
+    return sum(newval, currCt) 
 
 
 def stream(ssc, pwords, nwords, duration):
@@ -34,14 +34,14 @@ def stream(ssc, pwords, nwords, duration):
     
     positive = words.map(lambda word: ('Positive', 1) if word in pwords else ('Positive', 0))
     negative = words.map(lambda word: ('Negative', 1) if word in nwords else ('Negative', 0))
-    allSentiments = positive.union(negative)
-    sentimentCounts = allSentiments.reduceByKey(lambda x,y: x+y)
-    runningSentimentCounts = sentimentCounts.updateStateByKey(updateFunction)
-    runningSentimentCounts.pprint()
+    sentiment = positive.union(negative)
+    sentimentct = sentiment.reduceByKey(lambda x,y: x+y)
+    currsenti_ct = sentimentct.updateStateByKey(updateFunction)
+    currsenti_ct.pprint()
     
     # The counts variable hold the word counts for all time steps
     counts = []
-    sentimentCounts.foreachRDD(lambda t, rdd: counts.append(rdd.collect()))
+    sentimentct.foreachRDD(lambda t, rdd: counts.append(rdd.collect()))
     
     # Start the computation
     ssc.start() 
