@@ -31,10 +31,10 @@ class TweeterStreamListener(tweepy.StreamListener):
 
 if __name__ == '__main__':
 
-    consumer_key = "O9F1AUnEvsZkVkl99Cj7M4YY9"
-    consumer_secret = "xjV5k5Tr7zatDh0eIG8QKctkY9cU4UuhBbULcewRsxfoTCflVY"
-    access_key = "1518143925583634432-dAo09bPIdyLH62vfg5OsDosf3QtFza"
-    access_secret = "uEw1B8OxQVzTl5JcVc02ocqCIIs3zU7yPTwX3onuXLPeW"
+    consumer_key = "consumerkey"
+    consumer_secret = "consumersecret"
+    access_key = "accesskey"
+    access_secret = "accesssecret"
 
     #Auth object
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
